@@ -66,6 +66,24 @@ Including an example of how to use this role:
     - gradle
 ```
 
+Example to set explicitly JAVA_HOME for gradle_check if you don't use shelleg.java
+``` shell
+
+---
+- hosts: localhost
+  remote_user: root
+  gather_facts: yes
+  roles:
+    - shelleg.gradle
+# define JAVA_HOME for complete role based on an ansible_fact which was defined in another role
+      environment:
+        JAVA_HOME: "{{ ansible_facts['ansible_local']['java']['general']['home'] }}"
+      gradle_version: 6.3
+      gradle_checksum: sha256:0f316a67b971b7b571dac7215dcf2591a30994b3450e0629925ffcfe2c68cc5c
+      gradle_base_dir: /opt
+```
+
+
 Changelog:
 ----------
 
